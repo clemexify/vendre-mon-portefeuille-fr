@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendre Mon Portefeuille — Estimez la valeur de votre portefeuille d'assurance</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f0ece4;
+      color: #2a2a2a;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #1b3658;
+      border-bottom: 4px solid #b89040;
+    }
+    .header-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-area h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 20px;
+      font-weight: normal;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+    .logo-area h1 span { color: #d4aa50; }
+    .logo-area p {
+      font-size: 11px;
+      color: #8aaac4;
+      margin-top: 3px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .header-contact {
+      font-size: 12px;
+      color: #8aaac4;
+      text-align: right;
+      line-height: 1.7;
+    }
+    .header-contact strong { color: #d4aa50; font-size: 14px; display: block; }
+
+    /* ── BANDEAU INTRO ── */
+    .intro-band {
+      background: #162d4a;
+      padding: 28px 24px;
+      text-align: center;
+      border-bottom: 1px solid #2a4a6a;
+    }
+    .intro-band h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .intro-band p {
+      font-size: 13px;
+      color: #8aaac4;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 920px;
+      margin: 32px auto 60px;
+      padding: 0 24px;
+    }
+
+    /* ── NOTE INTRO ── */
+    .note-intro {
+      background: #fff;
+      border-left: 4px solid #b89040;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .note-intro strong { color: #1b3658; }
+
+    /* ── SECTION FORMULAIRE ── */
+    .form-section {
+      background: #fff;
+      border: 1px solid #d4ccbe;
+      border-top: 3px solid #1b3658;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .form-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .section-num {
+      background: #1b3658;
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .form-section h2 {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: normal;
+      color: #1b3658;
+    }
+    .section-desc {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #ede8df;
+      margin-left: 38px;
+    }
+
+    /* ── CHAMPS ── */
+    .fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 28px;
+    }
+    .fields-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .fields-grid.cols-1 { grid-template-columns: 1fr; }
+
+    .field { display: flex; flex-direction: column; }
+    .field.span-2 { grid-column: span 2; }
+
+    .field label {
+      font-size: 12px;
+      color: #444;
+      font-weight: 700;
+      margin-bottom: 5px;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+    .field .hint {
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    input[type="number"], input[type="text"], select, textarea {
+      border: 1px solid #c8c0b0;
+      padding: 9px 11px;
+      font-size: 14px;
+      color: #2a2a2a;
+      background: #fdfcfa;
+      width: 100%;
+      border-radius: 2px;
+      outline: none;
+      font-family: inherit;
+      appearance: none;
+    }
+    input[type="number"]:focus, input[type="text"]:focus,
+    select:focus, textarea:focus {
+      border-color: #1b3658;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(27,54,88,0.08);
+    }
+    input.big {
+      font-size: 20px;
+      padding: 10px 12px;
+      font-family: Georgia, serif;
+    }
+    .euro-wrap { position: relative; }
+    .euro-wrap::after {
+      content: '€';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 16px;
+      pointer-events: none;
+    }
+    .pct-wrap { position: relative; }
+    .pct-wrap::after {
+      content: '%';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    /* radio boutons */
+    .radio-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #444;
+      font-weight: normal;
+      text-transform: none;
+      letter-spacing: 0;
+      cursor: pointer;
+      padding: 7px 12px;
+      border: 1px solid #d0c8bc;
+      background: #fdfcfa;
+      border-radius: 2px;
+      transition: border-color 0.1s, background 0.1s;
+    }
+    .radio-group input[type="radio"] { display: none; }
+    .radio-group label:has(input:checked) {
+      border-color: #1b3658;
+      background: #eef3f8;
+      color: #1b3658;
+      font-weight: 600;
+    }
+
+    /* ── TABLEAU BRANCHES ── */
+    .branch-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .branch-table th {
+      text-align: left;
+      font-size: 11px;
+      color: #999;
+      padding: 7px 10px;
+      border-bottom: 2px solid #ede8df;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .branch-table th:last-child { text-align: right; }
+    .branch-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #f0ebe2;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+    .branch-name { color: #333; }
+    .branch-coeff {
+      color: #888;
+      font-size: 12px;
+      font-style: italic;
+    }
+    .branch-table td:last-child { width: 110px; }
+    .branch-table input[type="number"] {
+      width: 90px;
+      text-align: right;
+      padding-right: 28px;
+    }
+    .total-row td {
+      background: #f0ebe2;
+      border-top: 2px solid #d4ccbe;
+      font-weight: 700;
+      font-size: 13px;
+      border-bottom: none;
+    }
+    #total-pct { color: #1b3658; }
+    #total-pct.error { color: #c0392b; }
+    .total-label { color: #555; }
+
+    /* ── CURSEUR ── */
+    .slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2px;
+    }
+    input[type="range"] {
+      flex: 1;
+      height: 4px;
+      accent-color: #1b3658;
+      cursor: pointer;
+    }
+    .slider-val {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1b3658;
+      min-width: 42px;
+      text-align: right;
+    }
+
+    /* ── BOUTON CALCULER ── */
+    .submit-zone {
+      text-align: center;
+      padding: 8px 0 4px;
+    }
+    .btn-calculer {
+      background: #1b3658;
+      color: #fff;
+      border: none;
+      padding: 16px 56px;
+      font-size: 17px;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      border-bottom: 4px solid #b89040;
+      display: inline-block;
+    }
+    .btn-calculer:hover { background: #162d4a; }
+    .btn-calculer:active { border-bottom-width: 2px; transform: translateY(2px); }
+    .submit-note {
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── RÉSULTATS ── */
+    #results {
+      display: none;
+      background: #fff;
+      border: 1px solid #d4ccbe;
+      border-top: 4px solid #b89040;
+      padding: 36px 40px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+    #results h2 {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: normal;
+      color: #1b3658;
+      margin-bottom: 8px;
+    }
+    .results-sub {
+      font-size: 13px;
+      color: #999;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ede8df;
+      margin-bottom: 28px;
+    }
+
+    /* fourchette de valeur */
+    .value-range {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin: 8px 0 24px;
+    }
+    .val-box { text-align: center; }
+    .val-label {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .val-amount {
+      font-family: Georgia, serif;
+      font-size: 40px;
+      color: #1b3658;
+      line-height: 1;
+    }
+    .val-sep {
+      font-family: Georgia, serif;
+      font-size: 32px;
+      color: #b89040;
+      line-height: 1;
+      padding-bottom: 4px;
+    }
+
+    /* coefficient */
+    .coeff-line {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      background: #f8f5ef;
+      border: 1px solid #e8e2d8;
+      padding: 12px 20px;
+      margin-bottom: 28px;
+    }
+    .coeff-line strong { color: #1b3658; }
+
+    /* tableau des facteurs */
+    .factors-title {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .factor-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0ebe2;
+      font-size: 13px;
+      color: #555;
+      gap: 12px;
+    }
+    .factor-row:last-child { border-bottom: none; }
+    .factor-row .fval {
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    .fval.pos { color: #2e7d32; }
+    .fval.neg { color: #c0392b; }
+    .fval.neu { color: #999; }
+
+    /* CTA encadré */
+    .result-cta {
+      margin-top: 28px;
+      background: #eef3f8;
+      border-left: 4px solid #1b3658;
+      padding: 18px 20px;
+    }
+    .result-cta strong {
+      display: block;
+      color: #1b3658;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .result-cta p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .result-cta .btn-contact {
+      display: inline-block;
+      margin-top: 14px;
+      background: #1b3658;
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 13px;
+      text-decoration: none;
+      border-bottom: 2px solid #b89040;
+    }
+
+    /* avertissement */
+    .result-disclaimer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #bbb;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1b3658;
+      color: #6a8aaa;
+      text-align: center;
+      padding: 22px 20px;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    footer a { color: #8aaac4; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .fields-grid, .fields-grid.cols-3 { grid-template-columns: 1fr; }
+      .field.span-2 { grid-column: span 1; }
+      .header-contact { display: none; }
+      .form-section { padding: 20px 16px; }
+      #results { padding: 24px 20px; }
+      .val-amount { font-size: 30px; }
+      .value-range { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <h1>Vendre-<span>mon-portefeuille</span>.fr</h1>
+      <p>La cession de portefeuilles d'assurance entre professionnels</p>
+    </div>
+    <div class="header-contact">
+      <strong>01 XX XX XX XX</strong>
+      Du lundi au vendredi, 9h–18h
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<div class="intro-band">
+  <h2>Estimez la valeur de votre portefeuille d'assurance</h2>
+  <p>Un outil sérieux, conçu par des professionnels du courtage. Répondez aux questions ci-dessous, obtenez une fourchette de valorisation en quelques minutes.</p>
+</div>
+
+<main>
+
+  <div class="note-intro">
+    <strong>Comment ça marche ?</strong> Renseignez les grandes caractéristiques de votre portefeuille.
+    Notre calcul s'appuie sur les méthodes utilisées par les cabinets spécialisés dans la cession de portefeuilles de courtage en France —
+    notamment la méthode du multiple de commissions récurrentes, ajusté selon la qualité de votre carnet.
+    Le résultat est une <strong>estimation indicative</strong>, point de départ d'une discussion avec un conseiller.
+  </div>
+
+  <form id="form-valo" novalidate>
+
+    <!-- ── SECTION 1 : BASE ── -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <span class="section-num">1</span>
+        <h2>Votre portefeuille en chiffres</h2>
+      </div>
+      <p class="section-desc">Les données comptables de référence, sur votre dernière année complète.</p>
+
+      <div class="fields-grid">
+        <div class="field span-2">
+          <label>Commissions annuelles récurrentes</label>
+          <div class="euro-wrap">
+            <input class="big" type="number" id="commissions" min="0" step="1000" placeholder="Ex. : 120 000" required>
+          </div>
+          <span class="hint">Hors affaires nouvelles. C'est la base du calcul — ce que votre portefeuille rapporte chaque année par renouvellement.</span>
+        </div>
+
+        <div class="field">
+          <label>Nombre de clients</label>
+          <input type="number" id="nb-clients" min="0" step="1" placeholder="Ex. : 350">
+        </div>
+
+        <div class="field">
+          <label>Nombre de contrats</label>
+          <input type="number" id="nb-contrats" min="0" step="1" placeholder="Ex. : 620">
+        </div>
+
+        <div class="field">
+          <label>Ancienneté du cabinet</label>
+          <select id="anciennete">
+            <option value="">— Choisir —</option>
+            <option value="moins5">Moins de 5 ans</option>
+            <option value="5a10">5 à 10 ans</option>
+            <option value="10a20">10 à 20 ans</option>
+            <option value="plus20">Plus de 20 ans</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Département</label>
+          <input type="text" id="departement" placeholder="Ex. : 44 — Loire-Atlantique" maxlength="60">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 2 : BRANCHES ── -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <span class="section-num">2</span>
+        <h2>Répartition par branche</h2>
+      </div>
+      <p class="section-desc">Indiquez la part de chaque branche dans vos commissions totales. Le total doit faire 100 %.</p>
+
+      <table class="branch-table">
+        <thead>
+          <tr>
+            <th>Branche</th>
+            <th>Coefficient de base*</th>
+            <th style="text-align:right">% du CA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="branch-name">Auto / Habitation particuliers</td>
+            <td class="branch-coeff">1,2 — 1,4 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="1.2" data-coeff-high="1.4" id="b-auto" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">Santé individuelle</td>
+            <td class="branch-coeff">1,5 — 2,0 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="1.5" data-coeff-high="2.0" id="b-sante" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">Prévoyance / Assurance-vie</td>
+            <td class="branch-coeff">2,0 — 3,0 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="2.0" data-coeff-high="3.0" id="b-prevoyance" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">Assurance emprunteur</td>
+            <td class="branch-coeff">2,0 — 3,0 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="2.0" data-coeff-high="3.0" id="b-emprunteur" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">Santé / Prévoyance collective</td>
+            <td class="branch-coeff">2,0 — 2,7 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="2.0" data-coeff-high="2.7" id="b-collectif" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">Risques professionnels / entreprises</td>
+            <td class="branch-coeff">1,8 — 2,5 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="1.8" data-coeff-high="2.5" id="b-pro" min="0" max="100" value="0"></div></td>
+          </tr>
+          <tr>
+            <td class="branch-name">IARD divers / Multirisque</td>
+            <td class="branch-coeff">1,6 — 2,4 ×</td>
+            <td><div class="pct-wrap"><input type="number" class="branch-pct" data-coeff-low="1.6" data-coeff-high="2.4" id="b-iard" min="0" max="100" value="0"></div></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2" class="total-label">Total</td>
+            <td style="text-align:right; padding-right:10px"><span id="total-pct">0</span> %</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p style="font-size:11px;color:#bbb;margin-top:8px;font-style:italic">* Sources : pratiques de marché constatées en France — Selectra, Haussmann Fusions-Acquisitions, ACFI Solutions.</p>
+    </div>
+
+    <!-- ── SECTION 3 : QUALITÉ DU PORTEFEUILLE ── -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <span class="section-num">3</span>
+        <h2>Qualité et stabilité du portefeuille</h2>
+      </div>
+      <p class="section-desc">Ces critères ajustent le coefficient à la hausse ou à la baisse.</p>
+
+      <div class="fields-grid" style="row-gap:26px">
+
+        <div class="field">
+          <label>Taux de résiliation annuel</label>
+          <div class="slider-wrap">
+            <input type="range" id="taux-resiliation" min="0" max="30" step="1" value="8">
+            <span class="slider-val"><span id="resiliation-val">8</span> %</span>
+          </div>
+          <span class="hint">Contrats résiliés sur l'année ÷ total contrats. En dessous de 8 %, c'est un bon signe.</span>
+        </div>
+
+        <div class="field">
+          <label>Clients multi-équipés (2 contrats ou plus)</label>
+          <div class="slider-wrap">
+            <input type="range" id="taux-multiequip" min="0" max="100" step="5" value="30">
+            <span class="slider-val"><span id="multiequip-val">30</span> %</span>
+          </div>
+          <span class="hint">Part de vos clients qui ont au moins deux contrats chez vous.</span>
+        </div>
+
+        <div class="field">
+          <label>Concentration — vos 10 premiers clients</label>
+          <div class="slider-wrap">
+            <input type="range" id="taux-concentration" min="0" max="80" step="5" value="25">
+            <span class="slider-val"><span id="concentration-val">25</span> %</span>
+          </div>
+          <span class="hint">% du CA que représentent vos 10 plus gros clients. Au-dessus de 40 %, le portefeuille devient fragile.</span>
+        </div>
+
+        <div class="field">
+          <label>Sinistralité générale</label>
+          <div class="radio-group">
+            <label><input type="radio" name="sinistralite" value="bonne"> Bonne</label>
+            <label><input type="radio" name="sinistralite" value="normale" checked> Normale</label>
+            <label><input type="radio" name="sinistralite" value="degradee"> Dégradée</label>
+          </div>
+          <span class="hint">Appréciation globale de votre ratio sinistres/primes sur 3 ans.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SECTION 4 : STRUCTURE DU CABINET ── -->
+    <div class="form-section">
+      <div class="form-section-header">
+        <span class="section-num">4</span>
+        <h2>Structure et organisation de votre cabinet</h2>
+      </div>
+      <p class="section-desc">Ces éléments sont scrutés de près par tout repreneur sérieux — et par son banquier.</p>
+
+      <div class="fields-grid" style="row-gap:26px">
+
+        <div class="field">
+          <label>Type de commissionnement</label>
+          <div class="radio-group">
+            <label><input type="radio" name="commissionnement" value="lineaire" checked> Linéaire</label>
+            <label><input type="radio" name="commissionnement" value="mixte"> Mixte</label>
+            <label><input type="radio" name="commissionnement" value="precompte"> Précompte</label>
+          </div>
+          <span class="hint">Le commissionnement linéaire (versé sur la durée du contrat) est mieux valorisé qu'un précompte.</span>
+        </div>
+
+        <div class="field">
+          <label>Répartition de la clientèle</label>
+          <div class="radio-group">
+            <label><input type="radio" name="type-clients" value="majorite-part"> Majorité particuliers</label>
+            <label><input type="radio" name="type-clients" value="equilibre" checked> Équilibré</label>
+            <label><input type="radio" name="type-clients" value="majorite-pro"> Majorité pro/entreprises</label>
+          </div>
+          <span class="hint">Les entreprises et professionnels apportent des contrats plus stables et mieux commissionnés.</span>
+        </div>
+
+        <div class="field">
+          <label>Nombre de compagnies partenaires actives</label>
+          <div class="radio-group">
+            <label><input type="radio" name="nb-compagnies" value="moins8"> Moins de 8</label>
+            <label><input type="radio" name="nb-compagnies" value="8a15" checked> 8 à 15</label>
+            <label><input type="radio" name="nb-compagnies" value="plus15"> Plus de 15</label>
+          </div>
+          <span class="hint">Une bonne diversification rassure l'acheteur : moins de dépendance à une seule compagnie.</span>
+        </div>
+
+        <div class="field">
+          <label>Dossiers clients et conformité DDA</label>
+          <div class="radio-group">
+            <label><input type="radio" name="conformite" value="oui" checked> Conformes et à jour</label>
+            <label><input type="radio" name="conformite" value="partiel"> Partiellement</label>
+            <label><input type="radio" name="conformite" value="non"> À régulariser</label>
+          </div>
+          <span class="hint">Fiches de conseil, besoins et exigences, devoir de conseil — tout ce que contrôle l'ACPR.</span>
+        </div>
+
+        <div class="field span-2">
+          <label>Dépendance au dirigeant / repreneur identifié</label>
+          <div class="radio-group">
+            <label><input type="radio" name="dependance" value="successeur"> Successeur identifié ou cabinet structuré</label>
+            <label><input type="radio" name="dependance" value="partielle" checked> Dépendance partielle</label>
+            <label><input type="radio" name="dependance" value="forte"> Fort ratachement à ma personne</label>
+          </div>
+          <span class="hint">Si tout repose sur vous, l'acheteur va décorer le prix — le risque de fuite clientèle est réel.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOUTON -->
+    <div class="submit-zone">
+      <button type="submit" class="btn-calculer">Calculer mon estimation</button>
+      <p class="submit-note">Résultat immédiat — aucune donnée personnelle collectée à cette étape</p>
+    </div>
+
+  </form>
+
+  <!-- ── RÉSULTATS ── -->
+  <div id="results">
+    <h2>Estimation de la valeur de votre portefeuille</h2>
+    <p class="results-sub" id="results-context"></p>
+
+    <div class="value-range">
+      <div class="val-box">
+        <div class="val-label">Estimation basse</div>
+        <div class="val-amount" id="val-low">—</div>
+      </div>
+      <div class="val-sep">—</div>
+      <div class="val-box">
+        <div class="val-label">Estimation haute</div>
+        <div class="val-amount" id="val-high">—</div>
+      </div>
+    </div>
+
+    <div class="coeff-line" id="coeff-line"></div>
+
+    <div style="margin-top:28px">
+      <p class="factors-title">Détail des ajustements appliqués</p>
+      <div id="factors-list"></div>
+    </div>
+
+    <div class="result-cta">
+      <strong>Cette estimation vous intéresse ?</strong>
+      <p>
+        Un conseiller peut affiner cette valorisation avec vous, préparer votre dossier de cession
+        et vous mettre en relation avec des repreneurs sérieux dans votre région.
+        La première prise de contact est gratuite et sans engagement.
+      </p>
+      <a href="#contact" class="btn-contact">Être rappelé par un conseiller →</a>
+    </div>
+
+    <p class="result-disclaimer">
+      Cette estimation est fournie à titre indicatif, sur la base des pratiques de marché constatées en France pour la cession de portefeuilles de courtage.
+      Elle ne constitue pas une expertise comptable ni un engagement ferme de prix.
+      La valeur définitive dépendra d'une analyse approfondie de vos données réelles par un professionnel.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <strong style="color:#8aaac4">Vendre-mon-portefeuille.fr</strong><br>
+  Mise en relation entre courtiers cédants et repreneurs — France entière<br>
+  <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a> · <a href="#">Contact</a>
+</footer>
+
+<script>
+  // ── Sliders : mise à jour de l'affichage ──
+  document.getElementById('taux-resiliation').addEventListener('input', function() {
+    document.getElementById('resiliation-val').textContent = this.value;
+  });
+  document.getElementById('taux-multiequip').addEventListener('input', function() {
+    document.getElementById('multiequip-val').textContent = this.value;
+  });
+  document.getElementById('taux-concentration').addEventListener('input', function() {
+    document.getElementById('concentration-val').textContent = this.value;
+  });
+
+  // ── Total branches ──
+  function updateTotal() {
+    const inputs = document.querySelectorAll('.branch-pct');
+    let total = 0;
+    inputs.forEach(i => total += parseFloat(i.value) || 0);
+    const el = document.getElementById('total-pct');
+    el.textContent = Math.round(total * 10) / 10;
+    el.classList.toggle('error', Math.abs(total - 100) > 0.5 && total > 0);
+  }
+  document.querySelectorAll('.branch-pct').forEach(i => i.addEventListener('input', updateTotal));
+
+  // ── Formatage monétaire ──
+  function formatEuros(n) {
+    if (n >= 1000000) return (Math.round(n / 10000) / 100).toFixed(2).replace('.', ',') + ' M€';
+    if (n >= 1000) return Math.round(n).toLocaleString('fr-FR') + ' €';
+    return Math.round(n) + ' €';
+  }
+
+  // ── CALCUL PRINCIPAL ──
+  document.getElementById('form-valo').addEventListener('submit', function(e) {
+    e.preventDefault();
+    calculate();
+  });
+
+  function calculate() {
+    const commissions = parseFloat(document.getElementById('commissions').value) || 0;
+    if (commissions <= 0) {
+      alert('Veuillez saisir le montant de vos commissions annuelles récurrentes.');
+      document.getElementById('commissions').focus();
+      return;
+    }
+
+    // -- Coefficient de base par branche (moyenne pondérée) --
+    const branches = document.querySelectorAll('.branch-pct');
+    let totalPct = 0, baseLow = 0, baseHigh = 0;
+    branches.forEach(b => {
+      const pct = parseFloat(b.value) || 0;
+      totalPct += pct;
+      baseLow  += pct * parseFloat(b.dataset.coeffLow);
+      baseHigh += pct * parseFloat(b.dataset.coeffHigh);
+    });
+
+    // Si aucune branche renseignée : coefficients génériques
+    if (totalPct < 5) {
+      baseLow  = 160;  // 1.60
+      baseHigh = 220;  // 2.20
+    } else {
+      baseLow  = baseLow  / totalPct;
+      baseHigh = baseHigh / totalPct;
+    }
+
+    // -- Ajustements qualitatifs --
+    const factors = [];
+    let adj = 0;
+
+    // 1. Résiliation
+    const resil = parseInt(document.getElementById('taux-resiliation').value);
+    if (resil < 5) {
+      factors.push({ label: 'Taux de résiliation excellent (< 5 %)', delta: +0.20, tag: 'pos' });
+      adj += 0.20;
+    } else if (resil <= 10) {
+      factors.push({ label: `Taux de résiliation correct (${resil} %)`, delta: +0.05, tag: 'pos' });
+      adj += 0.05;
+    } else if (resil <= 15) {
+      factors.push({ label: `Taux de résiliation élevé (${resil} %)`, delta: -0.15, tag: 'neg' });
+      adj -= 0.15;
+    } else {
+      factors.push({ label: `Taux de résiliation très élevé (${resil} %)`, delta: -0.35, tag: 'neg' });
+      adj -= 0.35;
+    }
+
+    // 2. Multi-équipement
+    const multi = parseInt(document.getElementById('taux-multiequip').value);
+    if (multi >= 50) {
+      factors.push({ label: `Fort multi-équipement (${multi} % de clients)`, delta: +0.20, tag: 'pos' });
+      adj += 0.20;
+    } else if (multi >= 30) {
+      factors.push({ label: `Bon multi-équipement (${multi} % de clients)`, delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (multi < 15) {
+      factors.push({ label: `Faible multi-équipement (${multi} % de clients)`, delta: -0.10, tag: 'neg' });
+      adj -= 0.10;
+    } else {
+      factors.push({ label: `Multi-équipement moyen (${multi} % de clients)`, delta: 0, tag: 'neu' });
+    }
+
+    // 3. Concentration
+    const conc = parseInt(document.getElementById('taux-concentration').value);
+    if (conc < 20) {
+      factors.push({ label: `Bonne dispersion clientèle (top 10 = ${conc} % du CA)`, delta: +0.15, tag: 'pos' });
+      adj += 0.15;
+    } else if (conc <= 40) {
+      factors.push({ label: `Concentration acceptable (top 10 = ${conc} % du CA)`, delta: 0, tag: 'neu' });
+    } else {
+      factors.push({ label: `Forte concentration clientèle (top 10 = ${conc} % du CA)`, delta: -0.25, tag: 'neg' });
+      adj -= 0.25;
+    }
+
+    // 4. Sinistralité
+    const sinistralite = document.querySelector('input[name="sinistralite"]:checked').value;
+    if (sinistralite === 'bonne') {
+      factors.push({ label: 'Bonne sinistralité', delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (sinistralite === 'degradee') {
+      factors.push({ label: 'Sinistralité dégradée', delta: -0.20, tag: 'neg' });
+      adj -= 0.20;
+    } else {
+      factors.push({ label: 'Sinistralité normale', delta: 0, tag: 'neu' });
+    }
+
+    // 5. Commissionnement
+    const comm = document.querySelector('input[name="commissionnement"]:checked').value;
+    if (comm === 'lineaire') {
+      factors.push({ label: 'Commissionnement linéaire (revenus récurrents sécurisés)', delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (comm === 'precompte') {
+      factors.push({ label: 'Commissionnement en précompte (incertitude sur les flux futurs)', delta: -0.15, tag: 'neg' });
+      adj -= 0.15;
+    } else {
+      factors.push({ label: 'Commissionnement mixte', delta: 0, tag: 'neu' });
+    }
+
+    // 6. Type de clients
+    const typeClients = document.querySelector('input[name="type-clients"]:checked').value;
+    if (typeClients === 'majorite-pro') {
+      factors.push({ label: 'Portefeuille à dominante professionnelle/entreprises', delta: +0.20, tag: 'pos' });
+      adj += 0.20;
+    } else if (typeClients === 'majorite-part') {
+      factors.push({ label: 'Portefeuille à dominante particuliers', delta: 0, tag: 'neu' });
+    } else {
+      factors.push({ label: 'Mix équilibré particuliers / professionnels', delta: +0.05, tag: 'pos' });
+      adj += 0.05;
+    }
+
+    // 7. Compagnies
+    const compagnies = document.querySelector('input[name="nb-compagnies"]:checked').value;
+    if (compagnies === 'plus15') {
+      factors.push({ label: 'Bonne diversification compagnies (> 15 partenaires)', delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (compagnies === 'moins8') {
+      factors.push({ label: 'Peu de compagnies partenaires (< 8) — risque de dépendance', delta: -0.10, tag: 'neg' });
+      adj -= 0.10;
+    } else {
+      factors.push({ label: 'Nombre de compagnies partenaires correct (8–15)', delta: 0, tag: 'neu' });
+    }
+
+    // 8. Conformité DDA
+    const conformite = document.querySelector('input[name="conformite"]:checked').value;
+    if (conformite === 'oui') {
+      factors.push({ label: 'Dossiers conformes DDA / fiches de conseil à jour', delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (conformite === 'non') {
+      factors.push({ label: 'Dossiers à régulariser — risque réglementaire pour l\'acheteur', delta: -0.15, tag: 'neg' });
+      adj -= 0.15;
+    } else {
+      factors.push({ label: 'Conformité partielle — travail de mise à jour à prévoir', delta: -0.05, tag: 'neg' });
+      adj -= 0.05;
+    }
+
+    // 9. Dépendance / succession
+    const dependance = document.querySelector('input[name="dependance"]:checked').value;
+    if (dependance === 'successeur') {
+      factors.push({ label: 'Cabinet structuré ou successeur identifié', delta: +0.10, tag: 'pos' });
+      adj += 0.10;
+    } else if (dependance === 'forte') {
+      factors.push({ label: 'Fort rattachement à la personne du dirigeant', delta: -0.20, tag: 'neg' });
+      adj -= 0.20;
+    } else {
+      factors.push({ label: 'Dépendance partielle au dirigeant', delta: -0.05, tag: 'neg' });
+      adj -= 0.05;
+    }
+
+    // 10. Ancienneté
+    const anc = document.getElementById('anciennete').value;
+    if (anc === 'plus20') {
+      factors.push({ label: 'Cabinet établi depuis plus de 20 ans', delta: +0.15, tag: 'pos' });
+      adj += 0.15;
+    } else if (anc === '10a20') {
+      factors.push({ label: 'Cabinet bien établi (10 à 20 ans)', delta: +0.05, tag: 'pos' });
+      adj += 0.05;
+    } else if (anc === 'moins5') {
+      factors.push({ label: 'Cabinet jeune (moins de 5 ans) — historique court', delta: -0.10, tag: 'neg' });
+      adj -= 0.10;
+    }
+
+    // -- Coefficients finaux --
+    const finalLow  = Math.max(0.8,  baseLow  + adj - 0.10);
+    const finalHigh = Math.min(3.8,  baseHigh + adj + 0.10);
+    const valLow    = commissions * finalLow;
+    const valHigh   = commissions * finalHigh;
+
+    // -- Affichage --
+    document.getElementById('val-low').textContent  = formatEuros(valLow);
+    document.getElementById('val-high').textContent = formatEuros(valHigh);
+
+    const coeffMidLow  = Math.round(finalLow  * 100) / 100;
+    const coeffMidHigh = Math.round(finalHigh * 100) / 100;
+    document.getElementById('coeff-line').innerHTML =
+      `Coefficient appliqué : <strong>${coeffMidLow.toFixed(2).replace('.',',')} × à ${coeffMidHigh.toFixed(2).replace('.',',')} ×</strong> les commissions annuelles récurrentes` +
+      (totalPct >= 95 ? ` — base pondérée par votre mix de branches` : ` — base généraliste (répartition branches non renseignée)`);
+
+    const ctx = document.getElementById('results-context');
+    const nbClients = document.getElementById('nb-clients').value;
+    const dept = document.getElementById('departement').value;
+    let ctxParts = [];
+    if (dept) ctxParts.push(dept);
+    if (nbClients) ctxParts.push(nbClients + ' clients');
+    ctxParts.push(formatEuros(commissions) + ' de commissions récurrentes');
+    ctx.textContent = 'Sur la base de : ' + ctxParts.join(' · ');
+
+    const list = document.getElementById('factors-list');
+    list.innerHTML = factors.map(f => `
+      <div class="factor-row">
+        <span>${f.label}</span>
+        <span class="fval ${f.tag}">${f.delta > 0 ? '+' : ''}${f.delta !== 0 ? (f.delta * 100).toFixed(0) + ' pts' : '—'}</span>
+      </div>
+    `).join('');
+
+    const results = document.getElementById('results');
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+
+</body>
+</html>
